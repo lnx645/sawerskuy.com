@@ -7,7 +7,7 @@
   </head>
   <body>
     <script>
-      let socket = new WebSocket("ws://localhost:3001/websocket");
+      let socket = new WebSocket("ws://localhost:3001/websocket?token=098234324&secret=meiuu3y4");
       socket.onopen = (e) => {
         console.log(e);
       };
