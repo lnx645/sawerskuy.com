@@ -1,5 +1,7 @@
 import { bootstrap } from "@/bootstrap";
 /**
- * BOOTSTRAPPING APP
+ * ===============
+ * BOOTSTRAP APP
+ * ===============
  */
-bootstrap();
+await bootstrap();

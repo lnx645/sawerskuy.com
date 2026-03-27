@@ -28,6 +28,6 @@
     "noUnusedParameters": false,
     "noPropertyAccessFromIndexSignature": false
   },
-  "include": ["src/**/*", "env.d.ts","./*"],
+  "include": ["src/**/*", "env.d.ts","./*","scripts/build.ts"],
   "exclude": ["node_modules"]
 }

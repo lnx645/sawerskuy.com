@@ -1,17 +1,19 @@
 import { SetupDatabaseConnection } from "@/core/database/connection";
-import { Server } from "./core/server";
+import { RunServer } from "@/core/server";
+import { log, logError } from "@/core/logger";
 export async function bootstrap() {
   try {
     console.log("🚀 Starting Server");
-    //SETUP DATABASE CONNECTION
     await SetupDatabaseConnection();
     console.log("✅ Database Connected");
-    //setup server websocket
-    let server = new Server();
-    await server.RunServer();    
+    await RunServer();
   } catch (error) {
+    await logError(error as any);
+    console.error((error as any).message);
     console.log("❌ Failed To Start Server");
-    console.error(error);
     process.exit(1);
+  } finally {
+    console.log("✅ Server Started");
+    log("✅ Server Started");
   }
 }
