@@ -1,3 +1,4 @@
+import { prisma } from "@/core/database/prisma";
 import { authLoginHandler } from "@/handlers/api/auth-login.handler";
 import indexHandler from "@/handlers/index.handler";
 import type { WebsocketDataType } from "@/types/common";
@@ -7,7 +8,12 @@ export default {
   "/api/auth/login": {
     POST: authLoginHandler,
   },
-  "/api/users/:id": (e: BunRequest<"/api/users/:id">) => {
-    return new Response(e.params.id);
+  "/api/users/:id": async (e: BunRequest<"/api/users/:id">) => {
+    let data = await prisma.user.findMany({
+      where : {
+        id : 2
+      }
+    })
+    return Response.json(data);
   },
 } satisfies Serve.Routes<WebsocketDataType, any>;

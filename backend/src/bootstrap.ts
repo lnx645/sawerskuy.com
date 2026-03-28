@@ -2,6 +2,7 @@ import { SetupDatabaseConnection } from "@/core/database/connection";
 import { InitializeServer } from "@/core/server/server";
 import { log, logError } from "@/core/logger";
 import v2routes from "./routes/v2routes";
+import { prisma } from "./core/database/prisma";
 export async function bootstrap() {
   try {
     console.log("🚀 Starting Server");
