@@ -1,12 +1,13 @@
 import { SetupDatabaseConnection } from "@/core/database/connection";
-import { RunServer } from "@/core/server";
+import { InitializeServer } from "@/core/server/server";
 import { log, logError } from "@/core/logger";
+import v2routes from "./routes/v2routes";
 export async function bootstrap() {
   try {
     console.log("🚀 Starting Server");
     await SetupDatabaseConnection();
     console.log("✅ Database Connected");
-    await RunServer();
+    await InitializeServer();  
   } catch (error) {
     await logError(error as any);
     console.error((error as any).message);

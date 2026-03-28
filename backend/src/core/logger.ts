@@ -15,7 +15,7 @@ function formatMessage(level: string, message: string) {
 
 async function writeLog(content: any) {
   ensureLogDir();
-  await Bun.write(LOG_PATH, content, { append: true } as any);
+  await Bun.write(LOG_PATH, content);
 }
 
 // public logger
@@ -26,9 +26,6 @@ export async function log(message: string) {
 export async function logError(error: any) {
   const msg = error?.stack || error?.message || String(error);
   await writeLog(
-    formatMessage(
-      "ERROR",
-      `${msg}\n----------------------------------------`
-    )
+    formatMessage("ERROR", `${msg}\n----------------------------------------`),
   );
 }
